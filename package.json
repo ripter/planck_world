@@ -1,0 +1,28 @@
+{
+  "name": "planck_world",
+  "version": "1.0.0",
+  "description": "Playing and learning about Planck's Constant",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ripter/planck_world.git"
+  },
+  "author": "Chris Richards",
+  "license": "GPLV3",
+  "bugs": {
+    "url": "https://github.com/ripter/planck_world/issues"
+  },
+  "homepage": "https://github.com/ripter/planck_world#readme",
+  "dependencies": {
+    "three": "^0.120.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
