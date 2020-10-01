@@ -98,6 +98,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./src/createQuantumField.js":
+/*!***********************************!*\
+  !*** ./src/createQuantumField.js ***!
+  \***********************************/
+/*! exports provided: createQuantumField */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createQuantumField\", function() { return createQuantumField; });\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\n\n// All units in Planck\nfunction createQuantumField(width, height, depth) {\n  const fieldGroup = new three__WEBPACK_IMPORTED_MODULE_0__[\"Group\"]();\n\n  const geometry = new three__WEBPACK_IMPORTED_MODULE_0__[\"BoxGeometry\"](0.5, 0.5, 0.5);\n  // const geometry = new WireframeGeometry( box );\n  const material = new three__WEBPACK_IMPORTED_MODULE_0__[\"MeshBasicMaterial\"]( { color: 0xFF851B } );\n\n  for (let x=0; x < width; x++) {\n    for (let y=0; y < height; y++) {\n      for (let z=0; z < depth; z++) {\n        const mesh = new three__WEBPACK_IMPORTED_MODULE_0__[\"Mesh\"](geometry, material);\n        mesh.position.set(x, y, z);\n        fieldGroup.add(mesh);\n      }\n    }\n  }\n\n  return fieldGroup;\n}\n\n\n//# sourceURL=webpack:///./src/createQuantumField.js?");
+
+/***/ }),
+
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -106,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\n\nconst scene = new three__WEBPACK_IMPORTED_MODULE_0__[\"Scene\"]();\nconst camera = new three__WEBPACK_IMPORTED_MODULE_0__[\"PerspectiveCamera\"]( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );\n\nconst renderer = new three__WEBPACK_IMPORTED_MODULE_0__[\"WebGLRenderer\"]();\nrenderer.setSize( window.innerWidth, window.innerHeight );\ndocument.body.appendChild( renderer.domElement );\n\n\nvar geometry = new three__WEBPACK_IMPORTED_MODULE_0__[\"BoxGeometry\"]();\nvar material = new three__WEBPACK_IMPORTED_MODULE_0__[\"MeshBasicMaterial\"]( { color: 0x00ff00 } );\nvar cube = new three__WEBPACK_IMPORTED_MODULE_0__[\"Mesh\"]( geometry, material );\nscene.add( cube );\n\ncamera.position.z = 5;\n\n\nvar animate = function () {\n  requestAnimationFrame( animate );\n\n  cube.rotation.x += 0.01;\n  cube.rotation.y += 0.01;\n\n  renderer.render( scene, camera );\n};\n\nanimate();\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n/* harmony import */ var _createQuantumField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createQuantumField */ \"./src/createQuantumField.js\");\n\n\n\n\n\n\n//\n// Create the Scene and setup Camera, Rendering\nconst scene = new three__WEBPACK_IMPORTED_MODULE_0__[\"Scene\"]();\nconst camera = new three__WEBPACK_IMPORTED_MODULE_0__[\"PerspectiveCamera\"]( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );\ncamera.position.z = 5;\n\nconst renderer = new three__WEBPACK_IMPORTED_MODULE_0__[\"WebGLRenderer\"]();\nrenderer.setSize( window.innerWidth, window.innerHeight );\ndocument.body.appendChild( renderer.domElement );\n\n\n// var geometry = new BoxGeometry();\n// var material = new MeshBasicMaterial( { color: 0x00ff00 } );\n// var cube = new Mesh( geometry, material );\n// scene.add( cube );\n\n\nconst field = Object(_createQuantumField__WEBPACK_IMPORTED_MODULE_1__[\"createQuantumField\"])(3, 3, 3);\nfield.position.x = -1.5;\nfield.position.y = -1.5;\nscene.add(field);\n\n\nwindow.scene = scene;\n\n//\n// Animate everything!\nconst animate = function () {\n  requestAnimationFrame( animate );\n\n  // cube.rotation.x += 0.01;\n  // cube.rotation.y += 0.01;\n\n  renderer.render( scene, camera );\n};\n\nanimate();\n\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
