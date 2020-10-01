@@ -1,11 +1,11 @@
-import { Group, BoxGeometry, MeshBasicMaterial, Mesh, Vector3, WireframeGeometry } from 'three';
+import { Group, BoxGeometry, MeshToonMaterial, Mesh, Vector3 } from 'three';
 
 // All units in Planck
 export function createQuantumField(width, height, depth) {
   const fieldGroup = new Group();
 
   const geometry = new BoxGeometry(0.5, 0.5, 0.5);
-  const material = new MeshBasicMaterial( { color: 0xFF851B } );
+  const material = new MeshToonMaterial({ color: 0xFF851B });
 
   for (let x=0; x < width; x++) {
     for (let y=0; y < height; y++) {

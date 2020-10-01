@@ -1,4 +1,4 @@
-import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
+import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, DirectionalLight, AmbientLight } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import { createQuantumField } from './createQuantumField';
@@ -15,7 +15,7 @@ const renderer = new WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-
+//
 // Setup the user controls.
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -24,6 +24,19 @@ field.position.x = -1.5;
 field.position.y = -1.5;
 scene.add(field);
 
+
+// lights
+let light = new DirectionalLight( 0xffffff );
+// let light = new DirectionalLight( 0xff0000 );
+light.position.set( 1, 1, 1 );
+scene.add( light );
+//
+// light = new DirectionalLight( 0x002288 );
+// light.position.set( - 1, - 1, - 1 );
+// scene.add( light );
+
+// light = new AmbientLight( 0xffffff );
+// scene.add( light );
 
 window.scene = scene;
 
